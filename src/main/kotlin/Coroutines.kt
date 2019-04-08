@@ -1,7 +1,7 @@
 import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
-    exampleLaunchGlobal()
+    exampleLaunchGlobalWaiting()
 }
 
 
@@ -49,4 +49,23 @@ fun exampleLaunchGlobal() = runBlocking {
 
     println("three - from thread ${Thread.currentThread().name}")
     delay(3000)
+}
+
+
+fun exampleLaunchGlobalWaiting() = runBlocking {
+
+    println("one - from thread ${Thread.currentThread().name}")
+
+    // GlobalScope.launch return a 'Job' object
+    // that can be used to await for the coroutine to end,
+    // or to stop the coroutine
+    val job = GlobalScope.launch {
+        printlnDelayed("two - from thread ${Thread.currentThread().name}")
+    }
+
+    println("three - from thread ${Thread.currentThread().name}")
+
+    // Delay is not a good practice!!!
+    // It's better to use job.join() :)
+    job.join()
 }
