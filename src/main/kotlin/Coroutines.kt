@@ -1,7 +1,7 @@
 import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
-    exampleAsyncAwait()
+    exampleWithContext()
 }
 
 
@@ -108,6 +108,24 @@ fun exampleAsyncAwait() = runBlocking {
     val deferred3 = this.async { calculateHardThing(30) }
 
     val sum = deferred1.await() + deferred2.await() + deferred3.await()
+    val endTime = System.currentTimeMillis()
+
+    println("async/await result: $sum")
+    println("Total elapsed time: ${endTime - startTime} ")
+}
+
+
+fun exampleWithContext() = runBlocking {
+
+    val startTime = System.currentTimeMillis()
+
+    // withContext won't run the tasks concurrently,
+    // unlike async, in which case must await for the task to be completed
+    val result1 = withContext(Dispatchers.Default) { calculateHardThing(10) }
+    val result2 = withContext(Dispatchers.Default){ calculateHardThing(20) }
+    val result3 = withContext(Dispatchers.Default) { calculateHardThing(30) }
+
+    val sum = result1 + result2 + result3
     val endTime = System.currentTimeMillis()
 
     println("async/await result: $sum")
