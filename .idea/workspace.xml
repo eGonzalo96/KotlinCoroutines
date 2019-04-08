@@ -23,14 +23,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Coroutines.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="195">
+              <caret line="103" column="20" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
               <folding>
                 <element signature="n#!!block;n#printlnDelayed#0" />
                 <element signature="e#209#385#2" />
                 <element signature="n#!!block;n#exampleBlockingDispatcher#0" />
                 <element signature="e#1061#1130#2" />
                 <element signature="e#1463#1828#2" />
+                <element signature="e#2013#2499#2" />
               </folding>
             </state>
           </provider>
@@ -57,8 +58,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1366" />
-    <option name="y" value="24" />
+    <option name="y" value="792" />
     <option name="width" value="1366" />
     <option name="height" value="744" />
   </component>
@@ -103,7 +103,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554758992048" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554759639011" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
@@ -152,7 +152,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1366" y="24" width="1366" height="744" extended-state="6" />
+    <frame x="0" y="792" width="1366" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25757575" />
@@ -196,14 +196,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Coroutines.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="195">
+          <caret line="103" column="20" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
           <folding>
             <element signature="n#!!block;n#printlnDelayed#0" />
             <element signature="e#209#385#2" />
             <element signature="n#!!block;n#exampleBlockingDispatcher#0" />
             <element signature="e#1061#1130#2" />
             <element signature="e#1463#1828#2" />
+            <element signature="e#2013#2499#2" />
           </folding>
         </state>
       </provider>

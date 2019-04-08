@@ -1,7 +1,7 @@
 import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
-    exampleLaunchCoroutineScope()
+    exampleAsyncAwait()
 }
 
 
@@ -90,4 +90,26 @@ fun exampleLaunchCoroutineScope() = runBlocking {
 
     // Job.join() is no longer needed, because the coroutine
     // knows that there is another task that needs to be completed
+}
+
+
+suspend fun calculateHardThing(startNum: Int) : Int {
+    delay(1000)
+    return startNum * 10
+}
+
+
+fun exampleAsyncAwait() = runBlocking {
+
+    val startTime = System.currentTimeMillis()
+
+    val deferred1 = this.async { calculateHardThing(10) }
+    val deferred2 = this.async { calculateHardThing(20) }
+    val deferred3 = this.async { calculateHardThing(30) }
+
+    val sum = deferred1.await() + deferred2.await() + deferred3.await()
+    val endTime = System.currentTimeMillis()
+
+    println("async/await result: $sum")
+    println("Total elapsed time: ${endTime - startTime} ")
 }
