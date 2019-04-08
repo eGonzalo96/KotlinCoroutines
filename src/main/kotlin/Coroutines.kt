@@ -1,7 +1,7 @@
 import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
-    exampleLaunchGlobalWaiting()
+    exampleLaunchCoroutineScope()
 }
 
 
@@ -68,4 +68,26 @@ fun exampleLaunchGlobalWaiting() = runBlocking {
     // Delay is not a good practice!!!
     // It's better to use job.join() :)
     job.join()
+}
+
+
+fun exampleLaunchCoroutineScope() = runBlocking {
+
+    println("one - from thread ${Thread.currentThread().name}")
+
+    // We're running 'launch' in a Local Scope,
+    // not in the Glocal Scope
+    // Type of dispatchers:
+    //  - Default (another thread)
+    //  - IO (shared pool thread with the main thread)
+    //  - Main (android!! use)
+    //  - Unconfined
+    launch(Dispatchers.Default) {
+        printlnDelayed("two - from thread ${Thread.currentThread().name}")
+    }
+
+    println("three - from thread ${Thread.currentThread().name}")
+
+    // Job.join() is no longer needed, because the coroutine
+    // knows that there is another task that needs to be completed
 }
