@@ -5,14 +5,18 @@ fun main(args: Array<String>) {
 }
 
 
-fun printlnDelayed(message: String) {
-
-    Thread.sleep(1000)
+suspend fun printlnDelayed(message: String) {
+    delay(5000)
     println(message)
 }
 
 fun exampleBlocking() {
     println("one")
-    printlnDelayed("two")
+    runBlocking {
+        // Runs new coroutine and blocks
+        // current thread interruptibly until its completion
+        printlnDelayed("two")
+    }
+
     println("three")
 }
