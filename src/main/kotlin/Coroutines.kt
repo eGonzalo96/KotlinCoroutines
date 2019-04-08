@@ -1,22 +1,37 @@
 import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
-    exampleBlocking()
+    exampleBlockingDispatcher()
 }
 
 
 suspend fun printlnDelayed(message: String) {
-    delay(5000)
+    delay(1000)
     println(message)
 }
 
-fun exampleBlocking() {
+
+// runBlocking runs new coroutine and blocks
+// current thread interruptibly until its completion
+fun exampleBlocking() = runBlocking {
     println("one")
-    runBlocking {
-        // Runs new coroutine and blocks
-        // current thread interruptibly until its completion
-        printlnDelayed("two")
+    printlnDelayed("two")
+    println("three")
+}
+
+
+// Running on another thread but still blocking the main thread
+fun exampleBlockingDispatcher(){
+
+    // Dispatchers will switch between different threads.
+    // Dispatchers.Default runs the coroutine in another thread.
+    runBlocking(Dispatchers.Default) {
+        println("one - from thread ${Thread.currentThread().name}")
+        printlnDelayed("two - from thread ${Thread.currentThread().name}")
     }
 
-    println("three")
+    // Outside of runBlocking to show that it's running in the blocked main thread
+    println("three - from thread ${Thread.currentThread().name}")
+
+    // It still runs only after the runBlocking is fully executed.
 }
