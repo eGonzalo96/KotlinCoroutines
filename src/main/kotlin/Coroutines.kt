@@ -1,7 +1,7 @@
 import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
-    exampleBlockingDispatcher()
+    exampleLaunchGlobal()
 }
 
 
@@ -34,4 +34,19 @@ fun exampleBlockingDispatcher(){
     println("three - from thread ${Thread.currentThread().name}")
 
     // It still runs only after the runBlocking is fully executed.
+}
+
+
+fun exampleLaunchGlobal() = runBlocking {
+
+    println("one - from thread ${Thread.currentThread().name}")
+
+    // GlobalScope.launch doesn't block the main thread
+    // The main thread won't await for this thread
+    GlobalScope.launch {
+        printlnDelayed("two - from thread ${Thread.currentThread().name}")
+    }
+
+    println("three - from thread ${Thread.currentThread().name}")
+    delay(3000)
 }
